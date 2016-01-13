@@ -1,8 +1,10 @@
 <?php
 
 return array(
-    'hostname' => 'localhost',
-    'database' => 'koine_repo_test',
-    'username' => 'root',
-    'password' => '',
+    'mysql' => array(
+        'hostname' => 'localhost',
+        'database' => 'koine_repo_test',
+        'username' => 'root',
+        'password' => '',
+    ),
 );

@@ -6,16 +6,33 @@ error_reporting(E_ALL);
 $autoloader = require __DIR__ . '/../vendor/autoload.php';
 
 $config = array(
-    'driver'   => 'mysql',
-    'hostname' => 'localhost',
-    'database' => 'koine_repository',
-    'username' => 'root',
-    'password' => '',
+    'mysql' => array(
+        'driver'   => 'mysql',
+        'hostname' => 'localhost',
+        'database' => 'koine_repository',
+        'username' => 'root',
+        'password' => '',
+    ),
+    'pg' => array(
+        'driver'   => 'mysql',
+        'hostname' => 'localhost',
+        'database' => 'koine_repository',
+        'username' => 'postgres',
+        'password' => null,
+    ),
 );
 
 if (file_exists(__DIR__ . '/db_config.php')) {
     $config = require __DIR__ . '/db_config.php';
 }
+
+$db = getenv('DB');
+
+if (!$db) {
+    $db = 'mysql';
+}
+
+$config = $config[$db];
 
 $driver   = $config['driver'];
 $hostname = $config['hostname'];
@@ -23,21 +40,13 @@ $database = $config['database'];
 $password = $config['password'];
 $username = $config['username'];
 
-$db = getenv('DB');
-
-if ($db) {
-    $drivers = array(
-        'mysql'  => 'mysql',
-        'sqlite' => 'sqlite',
-        'pg'     => 'pgsql',
-    );
-
-    $driver = $drivers[$db];
-}
-
 $connection = new PDO("$driver:host=$hostname;", $username, $password);
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$connection->exec('SET CHARACTER SET utf8');
+
+try {
+    $connection->exec('SET CHARACTER SET utf8');
+} catch (\PDOException $e) {
+}
 
 $testTable = <<<SQL
     CREATE TABLE `test_table` (

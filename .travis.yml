@@ -2,10 +2,10 @@ sudo: false
 language: php
 
 env:
-  - DB=sqlite
+  # - DB=sqlite
   - DB=mysql
   # - DB=postgresql
-  - DB=pg
+  # - DB=pg
 
 matrix:
   fast_finish: true
@@ -27,10 +27,10 @@ install:
   - travis_retry composer install --no-interaction --ignore-platform-reqs
 
 script:
+  - ./vendor/bin/phpunit --version
   - if [[ $EXECUTE_TEST_COVERALLS != 'true' ]]; then vendor/bin/phpunit ; fi
   - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then vendor/bin/phpunit --coverage-clover=./build/logs/clover.xml; fi
-  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then ./bin/php-cs-fix.sh src true  ; fi
-  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then ./bin/php-cs-fix.sh tests true  ; fi
+  # - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then ./bin/php-cs-fix.sh src true  ; fi
 
 after_script:
   - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/coveralls ; fi
