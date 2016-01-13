@@ -4,7 +4,7 @@ namespace Koine\Repository;
 
 use Koine\Repository\Exception\RecordNotFoundException;
 use Koine\Repository\Storage\StorageInterface;
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Hydrator\HydratorInterface;
 
 abstract class RepositoryAbstract implements RepositoryInterface
 {

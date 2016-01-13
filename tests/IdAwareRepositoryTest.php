@@ -4,7 +4,7 @@ namespace KoineTest\Repository;
 
 use Koine\Repository\IdAwareRepository;
 use Koine\Repository\Test\DbTestCase;
-use Zend\Stdlib\Hydrator\ClassMethods;
+use Zend\Hydrator\ClassMethods;
 use Dummy\TestTableEntity;
 
 class IdAwareRepositoryTest extends DbTestCase
