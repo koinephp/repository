@@ -6,8 +6,9 @@ error_reporting(E_ALL);
 $autoloader = require __DIR__ . '/../vendor/autoload.php';
 
 $config = array(
+    'driver'   => 'mysql',
     'hostname' => 'localhost',
-    'database' => 'koine_test',
+    'database' => 'koine_repository',
     'username' => 'root',
     'password' => '',
 );
@@ -16,12 +17,25 @@ if (file_exists(__DIR__ . '/db_config.php')) {
     $config = require __DIR__ . '/db_config.php';
 }
 
+$driver   = $config['driver'];
 $hostname = $config['hostname'];
 $database = $config['database'];
 $password = $config['password'];
 $username = $config['username'];
 
-$connection = new PDO("mysql:host=$hostname;", $username, $password);
+$db = getenv('DB');
+
+if ($db) {
+    $drivers = array(
+        'mysql'  => 'mysql',
+        'sqlite' => 'sqlite',
+        'pg'     => 'pgsql',
+    );
+
+    $driver = $drivers[$db];
+}
+
+$connection = new PDO("$driver:host=$hostname;", $username, $password);
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $connection->exec('SET CHARACTER SET utf8');
 
