@@ -5,10 +5,10 @@ Repository pattern for PHP
 
 Code information:
 
-[![Build Status](https://travis-ci.org/koinephp/Repository.png?branch=master)](https://travis-ci.org/koinephp/Repository)
-[![Coverage Status](https://coveralls.io/repos/koinephp/Repository/badge.png)](https://coveralls.io/r/koinephp/Repository)
-[![Code Climate](https://codeclimate.com/github/koinephp/Repository.png)](https://codeclimate.com/github/koinephp/Repository)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/koinephp/Repository/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/koinephp/Repository/?branch=master)
+[![Build Status](https://travis-ci.org/koinephp/repository.png?branch=master)](https://travis-ci.org/koinephp/repository)
+[![Coverage Status](https://coveralls.io/repos/koinephp/repository/badge.png)](https://coveralls.io/r/koinephp/repository)
+[![Code Climate](https://codeclimate.com/github/koinephp/repository.png)](https://codeclimate.com/github/koinephp/repository)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/koinephp/repository/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/koinephp/repository/?branch=master)
 
 Package information:
 
@@ -16,7 +16,7 @@ Package information:
 [![Total Downloads](https://poser.pugx.org/koine/repository/downloads.svg)](https://packagist.org/packages/koine/repository)
 [![Latest Unstable Version](https://poser.pugx.org/koine/repository/v/unstable.svg)](https://packagist.org/packages/koine/repository)
 [![License](https://poser.pugx.org/koine/repository/license.svg)](https://packagist.org/packages/koine/repository)
-[![Dependency Status](https://gemnasium.com/koinephp/Repository.png)](https://gemnasium.com/koinephp/Repository)
+[![Dependency Status](https://gemnasium.com/koinephp/repository.png)](https://gemnasium.com/koinephp/repository)
 
 ## Usage
 
