@@ -6,7 +6,7 @@ use Koine\Repository\Exception\RecordNotFoundException;
 use Koine\Repository\Storage\StorageInterface;
 use PDO;
 
-class AbstractStorage implements StorageInterface
+abstract class AbstractStorage implements StorageInterface
 {
     /**
      * @var PDO
