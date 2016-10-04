@@ -21,14 +21,14 @@ abstract class RepositoryAbstract implements RepositoryInterface
     /**
      * @var StorageInterface
      */
-    private $persistence;
+    private $storage;
 
     /**
-     * @param StorageInterface $persistence
+     * @param StorageInterface $storage
      */
-    public function __construct(StorageInterface $persistence)
+    public function __construct(StorageInterface $storage)
     {
-        $this->persistence = $persistence;
+        $this->storage = $storage;
     }
 
     /**
@@ -36,7 +36,7 @@ abstract class RepositoryAbstract implements RepositoryInterface
      */
     protected function getStorage()
     {
-        return $this->persistence;
+        return $this->storage;
     }
 
     /**

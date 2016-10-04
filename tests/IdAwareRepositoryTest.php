@@ -16,13 +16,13 @@ class IdAwareRepositoryTest extends DbTestCase
     /** @var TestTable */
     protected $entityPrototype;
     /** @var MySql */
-    protected $persitence;
+    protected $storage;
 
     public function setUp()
     {
         parent::setUp();
-        $this->persitence = $this->getMock('Koine\Repository\Storage\StorageInterface');
-        $this->repository = new IdAwareRepository($this->persitence);
+        $this->storage = $this->getMock('Koine\Repository\Storage\StorageInterface');
+        $this->repository = new IdAwareRepository($this->storage);
         $this->hydrator = new ClassMethods();
         $this->entityPrototype = new TestTableEntity();
 
@@ -41,7 +41,7 @@ class IdAwareRepositoryTest extends DbTestCase
             'value' => 'bar',
         );
 
-        $this->persitence
+        $this->storage
             ->expects($this->once())
             ->method('insert')
             ->with($params)
@@ -65,7 +65,7 @@ class IdAwareRepositoryTest extends DbTestCase
             'value' => 'bar',
         );
 
-        $this->persitence
+        $this->storage
             ->expects($this->once())
             ->method('updateWhere')
             ->with($expectedConditions, $expectedParams)
@@ -83,7 +83,7 @@ class IdAwareRepositoryTest extends DbTestCase
     {
         $expectedConditions = array('id' => 1);
 
-        $this->persitence
+        $this->storage
             ->expects($this->once())
             ->method('deleteWhere')
             ->with($expectedConditions)
