@@ -16,13 +16,13 @@ class RepositoryTest extends DbTestCase
     /** @var TestTable */
     protected $entityPrototype;
     /** @var MySql */
-    protected $persitence;
+    protected $storage;
 
     public function setUp()
     {
         parent::setUp();
-        $this->persitence = $this->getMock('Koine\Repository\Storage\StorageInterface');
-        $this->repository = new Repository($this->persitence);
+        $this->storage = $this->getMock('Koine\Repository\Storage\StorageInterface');
+        $this->repository = new Repository($this->storage);
         $this->hydrator = new ClassMethods();
         $this->entityPrototype = new TestTableEntity();
 
@@ -54,7 +54,7 @@ class RepositoryTest extends DbTestCase
      */
     public function getHydratorThrowsExceptionWhenHydratorIsNotSet()
     {
-        $repository = new Repository($this->persitence);
+        $repository = new Repository($this->storage);
         $repository->getHydrator();
     }
 
@@ -74,7 +74,7 @@ class RepositoryTest extends DbTestCase
      */
     public function getEntityPrototypeThrowsExceptionWhenEntityPrototypeIsNotSet()
     {
-        $repository = new Repository($this->persitence);
+        $repository = new Repository($this->storage);
         $repository->getEntityPrototype();
     }
 
@@ -90,7 +90,7 @@ class RepositoryTest extends DbTestCase
             'value' => 'bar',
         );
 
-        $this->persitence
+        $this->storage
             ->expects($this->once())
             ->method('findOneBy')
             ->with($params)
@@ -119,7 +119,7 @@ class RepositoryTest extends DbTestCase
             ),
         );
 
-        $this->persitence
+        $this->storage
             ->expects($this->once())
             ->method('findAllBy')
             ->with($params)
