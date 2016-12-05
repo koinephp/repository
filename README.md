@@ -82,7 +82,7 @@ Append the lib to your requirements key in your composer.json.
 
 [Here](https://github.com/koinephp/Repository/issues) is the issue tracker.
 
-### Lincense
+### License
 [MIT](MIT-LICENSE)
 
 ### Authors
